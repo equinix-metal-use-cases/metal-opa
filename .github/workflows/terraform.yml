@@ -44,5 +44,8 @@ jobs:
         terraform plan --out tfplan.binary
         terraform show -json tfplan.binary > tfplan.json
 
-    - name: OPA testing
-      run: opa eval --fail-defined --format pretty --input tfplan.json --data policy/ data.terraform.deny
+    - name: OPA tests
+      uses: ibiqlik/conftest-action-docker@master
+      with:
+        path: "tfplan.json"
+        policy: "policy"
