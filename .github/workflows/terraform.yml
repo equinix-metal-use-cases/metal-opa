@@ -43,3 +43,4 @@ jobs:
       uses: ibiqlik/conftest-action-docker@master
       with:
         path: "tfplan.json"
+        policy: "policy/"
