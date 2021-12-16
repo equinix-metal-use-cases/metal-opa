@@ -47,4 +47,4 @@ jobs:
     - name: OPA testing
       run: |
         ls -la
-        opa
+        opa eval --fail-defined --format pretty --input tfplan.json --data policy/ data.terraform.deny
