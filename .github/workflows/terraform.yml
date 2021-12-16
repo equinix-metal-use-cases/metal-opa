@@ -45,4 +45,6 @@ jobs:
         terraform show -json tfplan.binary > tfplan.json
 
     - name: OPA testing
-      run: opa
+      run: |
+        ls -la
+        opa
