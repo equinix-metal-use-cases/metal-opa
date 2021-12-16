@@ -32,6 +32,9 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
+      env:
+        METAL_AUTH_TOKEN: ${{ secrets.METAL_AUTH_TOKEN }}
+        TF_VAR_project_id: ${{ secrets.TF_VAR_PROJECT_ID }}
       run: |
         terraform plan --out tfplan.binary
         terraform show -json tfplan.binary > tfplan.json
