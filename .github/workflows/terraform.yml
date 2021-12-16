@@ -18,6 +18,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Install OPA dependencies
+      run: |
+        curl -L -o /usr/local/sbin/opa https://openpolicyagent.org/downloads/v0.34.2/opa_linux_amd64_static
+        chmod +x /usr/local/sbin/opa
+
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
@@ -40,6 +45,5 @@ jobs:
         terraform show -json tfplan.binary > tfplan.json
 
     - name: OPA testing
-      uses: ibiqlik/conftest-action-docker@master
-      with:
-        path: "tfplan.json"
+      run: |
+        opa eval --fail-defined --format pretty --input tfplan.json --data policy/ data.terraform.deny
