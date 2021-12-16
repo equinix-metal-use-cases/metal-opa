@@ -45,6 +45,4 @@ jobs:
         terraform show -json tfplan.binary > tfplan.json
 
     - name: OPA testing
-      run: |
-        ls -la
-        opa eval --fail-defined --format pretty --input tfplan.json --data policy/ data.terraform.deny
+      run: opa eval --fail-defined --format pretty --input tfplan.json --data policy/ data.terraform.deny
