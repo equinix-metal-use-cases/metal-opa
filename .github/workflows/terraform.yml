@@ -44,7 +44,7 @@ jobs:
         terraform show -json tfplan.binary > /tmp/tfplan.json
         ls -la
         pushd /tmp
-        opa eval --fail --format pretty --input tfplan.json --data $GITHUB_WORKSPACE/policy/ data.terraform.deny
+        opa eval --fail-defined --format pretty --input tfplan.json --data $GITHUB_WORKSPACE/policy/ data.terraform.deny
         popd
 
     - name: OPA tests
