@@ -41,11 +41,8 @@ jobs:
         TF_VAR_project_id: ${{ secrets.TF_VAR_PROJECT_ID }}
       run: |
         terraform plan --out tfplan.binary
-        terraform show -json tfplan.binary > /tmp/tfplan.json
-        ls -la
-        pushd /tmp
-        opa eval --fail --format pretty --input tfplan.json --data $GITHUB_WORKSPACE/policy/ data.terraform.deny
-        popd
+        terraform show -json tfplan.binary > tfplan.json
+        opa eval --fail --format pretty --input tfplan.json --data policy/ data.terraform.deny
 
     - name: OPA tests
       uses: ibiqlik/conftest-action-docker@master
