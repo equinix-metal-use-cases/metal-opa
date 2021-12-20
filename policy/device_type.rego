@@ -7,8 +7,7 @@ array_contains(arr, elem) {
 }
  
 allowed_types = [
-  "c3.small.x86",
-  "c3.medium.x86",
+  "t1.small.x86",
 ]
  
 deny[reason] {
