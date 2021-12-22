@@ -100,3 +100,49 @@ Finished in 0.07756 seconds (files took 2.48 seconds to load)
 ```
 
 as it was expected - packages `nginx` is installed and port `80` is listening
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 3.0 |
+| <a name="requirement_metal"></a> [metal](#requirement\_metal) | ~> 3.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_local"></a> [local](#provider\_local) | n/a |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
+| <a name="provider_template"></a> [template](#provider\_template) | n/a |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_device"></a> [device](#module\_device) | git::github.com/andrewpopa/terraform-metal-device.git | n/a |
+| <a name="module_dns"></a> [dns](#module\_dns) | git::github.com/andrewpopa/terraform-cloudflare-dns | n/a |
+| <a name="module_key"></a> [key](#module\_key) | git::github.com/andrewpopa/terraform-metal-project-ssh-key | n/a |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [local_file.test_config](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
+| [random_pet.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
+| [template_file.this](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
+| [template_file.user_data](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_project_id"></a> [project\_id](#input\_project\_id) | project id | `string` | `""` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_access_private_ipv4"></a> [access\_private\_ipv4](#output\_access\_private\_ipv4) | private ipv4 |
+| <a name="output_access_public_ipv4"></a> [access\_public\_ipv4](#output\_access\_public\_ipv4) | public ipv4 |
+| <a name="output_hostname"></a> [hostname](#output\_hostname) | hostname |
