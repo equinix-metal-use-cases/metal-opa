@@ -4,6 +4,10 @@ module "key" {
   project_id = var.project_id
 }
 
+data "template_file" "user_data" {
+  template = file("boot/boot.sh")
+}
+
 // device
 module "device" {
   source              = "git::github.com/andrewpopa/terraform-metal-device.git"
@@ -14,4 +18,5 @@ module "device" {
   billing_cycle       = "hourly"
   project_id          = var.project_id
   project_ssh_key_ids = [module.key.id]
+  user_data           = data.template_file.user_data.rendered
 }

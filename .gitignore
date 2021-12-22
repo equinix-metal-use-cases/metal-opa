@@ -40,3 +40,4 @@ plan.rego
 .rspec
 terraform.tfvars
 spec/
+config
