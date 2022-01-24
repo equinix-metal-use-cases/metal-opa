@@ -18,10 +18,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Install OPA dependencies
-      run: |
-        sudo curl -L -o /usr/local/sbin/opa https://openpolicyagent.org/downloads/v0.34.2/opa_linux_amd64_static
-        sudo chmod +x /usr/local/sbin/opa
+    - name: Setup OPA
+      uses: open-policy-agent/setup-opa@v1
+
+    - name: Test Policy
+      run: opa test policy/*.rego -v      
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
