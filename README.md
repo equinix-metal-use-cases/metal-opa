@@ -62,7 +62,7 @@ allowed_types = [
 ```
 therefore during the evaluation the policy will give an error similar to this
 ```bash
-vagrant@opa:/vagrant$ opa eval --fail --format pretty --input tfplan.json --data policy/ data.terraform.deny
+vagrant@opa:/vagrant$ opa eval --fail --format pretty --input tfplan.json --data policies/ data.terraform.deny
 [
   "Instance type t1.small.x86 not allowed."
 ]
@@ -76,7 +76,7 @@ Once the infrastructure configuration satisfied the policy condition and `terraf
 
 copying the config to `.ssh` directory
 ```bash
-cp config /.ssh/
+cp config ~/.ssh/
 ```
 
 run the testing
@@ -103,51 +103,6 @@ as it was expected - packages `nginx` is installed and port `80` is listening
 
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 3.0 |
-| <a name="requirement_metal"></a> [metal](#requirement\_metal) | ~> 3.0 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_local"></a> [local](#provider\_local) | n/a |
-| <a name="provider_random"></a> [random](#provider\_random) | n/a |
-| <a name="provider_template"></a> [template](#provider\_template) | n/a |
-
-## Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_device"></a> [device](#module\_device) | git::github.com/andrewpopa/terraform-metal-device.git | n/a |
-| <a name="module_dns"></a> [dns](#module\_dns) | git::github.com/andrewpopa/terraform-cloudflare-dns | n/a |
-| <a name="module_key"></a> [key](#module\_key) | git::github.com/andrewpopa/terraform-metal-project-ssh-key | n/a |
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [local_file.test_config](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
-| [random_pet.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
-| [template_file.this](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
-| [template_file.user_data](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_project_id"></a> [project\_id](#input\_project\_id) | project id | `string` | `""` | no |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_access_private_ipv4"></a> [access\_private\_ipv4](#output\_access\_private\_ipv4) | private ipv4 |
-| <a name="output_access_public_ipv4"></a> [access\_public\_ipv4](#output\_access\_public\_ipv4) | public ipv4 |
-| <a name="output_hostname"></a> [hostname](#output\_hostname) | hostname |
-
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -159,9 +114,9 @@ as it was expected - packages `nginx` is installed and port `80` is listening
 
 | Name | Version |
 |------|---------|
-| <a name="provider_local"></a> [local](#provider\_local) | n/a |
-| <a name="provider_random"></a> [random](#provider\_random) | n/a |
-| <a name="provider_template"></a> [template](#provider\_template) | n/a |
+| <a name="provider_local"></a> [local](#provider\_local) | 2.1.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
+| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
 
@@ -185,6 +140,7 @@ as it was expected - packages `nginx` is installed and port `80` is listening
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | project id | `string` | `""` | no |
+| <a name="input_zone_id"></a> [zone\_id](#input\_zone\_id) | dns zone id | `string` | `""` | no |
 
 ## Outputs
 
@@ -192,5 +148,4 @@ as it was expected - packages `nginx` is installed and port `80` is listening
 |------|-------------|
 | <a name="output_access_private_ipv4"></a> [access\_private\_ipv4](#output\_access\_private\_ipv4) | private ipv4 |
 | <a name="output_access_public_ipv4"></a> [access\_public\_ipv4](#output\_access\_public\_ipv4) | public ipv4 |
-| <a name="output_hostname"></a> [hostname](#output\_hostname) | hostname |
-<!-- END_TF_DOCS -->
+| <a name="output_hostname"></a> [hostname](#output\_hostname) | server fqdn hostname |
