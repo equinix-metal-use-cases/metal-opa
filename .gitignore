@@ -39,6 +39,5 @@ plan.rego
 .prettierrc
 .rspec
 terraform.tfvars
-spec/
 config
 env.sh
