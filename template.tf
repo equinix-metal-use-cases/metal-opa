@@ -5,7 +5,7 @@ resource "random_pet" "this" {
 data "template_file" "this" {
   template = file("${path.module}/templates/config.tpl")
   vars = {
-    hostname  = module.dns.fqdn
+    hostname  = module.dns.hostname
     cert_name = module.key.private_key_filename
   }
 }

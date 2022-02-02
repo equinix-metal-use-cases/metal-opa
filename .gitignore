@@ -41,3 +41,4 @@ plan.rego
 terraform.tfvars
 spec/
 config
+env.sh

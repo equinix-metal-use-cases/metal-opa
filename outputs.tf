@@ -9,6 +9,6 @@ output "access_public_ipv4" {
 }
 
 output "hostname" {
-  description = "hostname"
-  value       = module.device.hostname
+  description = "server fqdn hostname"
+  value       = module.dns.hostname
 }
